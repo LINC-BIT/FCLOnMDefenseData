@@ -2,7 +2,7 @@
 
 这是一个面向海防部队数据的图像分析的联邦持续学习算法系统。该系统是为应对海防作战中数据孤岛、任务动态演化与隐私安全的多重挑战，其基于“数据-算法-训练”三位一体的联邦持续学习系统架构。系统以任务粒度为核心设计维度，通过模块化分层解耦与协同控制机制， 实现海防异构数据的合规治理、动态模型的弹性进化以及跨域知识的可控共享。其主要包括数据处理功能以及联邦持续学习训练功能。数据处理模块构建军事文档解析与特征标准化流水线，将碎片化的PDF数据转化为联邦就绪的可训练图片。之后在联邦持续学习方法中支持多种中心化和去中心化的相关算法，形成“数据特征可溯源、算法能力可扩展、训练过程可管控”的闭环系统，为海防任务提供从数据感知到智能决策的全链路支撑。
 
-
+<img src="https://github.com/LINC-BIT/FCLOnMDefenseData/blob/main/System.png" width="100%">
 
 # 1. PDF数据处理
 
@@ -235,11 +235,15 @@ pip install -r requirements.txt
 python ClientTrainPen/mainPen_EWC.py --alg=EWC_PENS --model=resnet --gpu=0 --seed=614 --m_ft=300
 ```
 
+<img src="https://github.com/LINC-BIT/FCLOnMDefenseData/blob/main/running_image/PENS.png" width="100%">
+
 **FedIR**
 
 ```shell
 python TMC/FedIR/mainFedIR.py --alg=FedIR --model=mobinet --gpu=0 --seed=614 --m_ft=300
 ```
+
+<img src="https://github.com/LINC-BIT/FCLOnMDefenseData/blob/main/running_image/FedIR.png" width="100%">
 
 **DPMN**
 
@@ -247,11 +251,15 @@ python TMC/FedIR/mainFedIR.py --alg=FedIR --model=mobinet --gpu=0 --seed=614 --m
 python TMC/DPMN/mainDPMN.py --alg=DPMN --model=resnet --gpu=0 --seed=614 --m_ft=300
 ```
 
+<img src="https://github.com/LINC-BIT/FCLOnMDefenseData/blob/main/running_image/DPMN.png" width="100%">
+
 **FedKNOW**
 
 ```shell
 python FCL/FedKNOW/mainFedKNOW.py --alg=FedKNOW --model=resnet --gpu=0 --seed=614 --m_ft=500 --round=5 --local_ep=5 --shard_per_user=8
 ```
+
+<img src="https://github.com/LINC-BIT/FCLOnMDefenseData/blob/main/running_image/FedKNOW.png" width="100%">
 
 **FedViT**
 
@@ -259,11 +267,15 @@ python FCL/FedKNOW/mainFedKNOW.py --alg=FedKNOW --model=resnet --gpu=0 --seed=61
 python FCL/FedViT/mainFedViT.py --alg=FedViT --model=tiny_pit --seed=614 --epochs=120 --task=20 --m_ft=500 --gpu=0 --n_memories=40 --round=5 --local_ep=5 --shard_per_user=8
 ```
 
+<img src="https://github.com/LINC-BIT/FCLOnMDefenseData/blob/main/running_image/FedViT.png" width="100%">
+
 **PuzzleFL**
 
 ```shell
 python ClientTrainOur/mainOur_EWC.py --alg=EWC_Our --model=tiny_vit --gpu=0 --seed=614
 ```
+
+<img src="https://github.com/LINC-BIT/FCLOnMDefenseData/blob/main/running_image/PuzzleFL.png" width="100%">
 
 **FedWEIT**
 
@@ -271,11 +283,15 @@ python ClientTrainOur/mainOur_EWC.py --alg=EWC_Our --model=tiny_vit --gpu=0 --se
 python FCL/WEIT/mainWEIT.py --alg=FedWEIT --model=weit_cnn --gpu=0 --seed=614 --m_ft=500 --round=5 --local_ep=5 --shard_per_user=4 --epochs=50 --num_users=100
 ```
 
+<img src="https://github.com/LINC-BIT/FCLOnMDefenseData/blob/main/running_image/FedWEIT.png" width="100%">
+
 **FedMD**
 
 ```
 python FL/FedMD/mainFedMD.py --alg=EWC_Our --model=resnet --gpu=0 --seed=614 --m_ft=500 --round=5 --local_ep=5 --shard_per_user=4 --epochs=50 --num_users=100
 ```
+
+<img src="https://github.com/LINC-BIT/FCLOnMDefenseData/blob/main/running_image/FedMD.png" width="100%">
 
 **FedKD**
 
@@ -283,11 +299,15 @@ python FL/FedMD/mainFedMD.py --alg=EWC_Our --model=resnet --gpu=0 --seed=614 --m
 python FL/FedKD/mainFedKD.py --alg=EWC_Our --model=resnet --gpu=0 --seed=614 --m_ft=500 --round=5 --local_ep=5 --shard_per_user=4 --epochs=50 --num_users=100
 ```
 
+<img src="https://github.com/LINC-BIT/FCLOnMDefenseData/blob/main/running_image/FedKD.png" width="100%">
+
 **FedKEMF**
 
 ```shell
 python FL/FedKEMF/mainFedKEMF.py --alg=EWC_Our --model=resnet --gpu=0 --seed=614 --m_ft=500 --round=5 --local_ep=5 --shard_per_user=4 --epochs=50 --num_users=100
 ```
+
+<img src="https://github.com/LINC-BIT/FCLOnMDefenseData/blob/main/running_image/FedKEMF.png" width="100%">
 
 **Loci**
 
@@ -295,3 +315,4 @@ python FL/FedKEMF/mainFedKEMF.py --alg=EWC_Our --model=resnet --gpu=0 --seed=614
 python FCL/FedKEMF/Loci.py --alg=EWC_Our --model=resnet --gpu=0 --seed=614 --m_ft=500 --round=5 --local_ep=5 --shard_per_user=4 --epochs=50 --num_users=100
 ```
 
+<img src="https://github.com/LINC-BIT/FCLOnMDefenseData/blob/main/running_image/Loci.png" width="100%">
