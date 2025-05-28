@@ -223,9 +223,47 @@ python ImageEnhance.py --data_dir = '原始图片存放路径' --output_dir = '�
    - 暴雨巨浪（船舱进水抢险）
    - 节日战备（春节/国庆执勤场景）
 
-# 2. 支持的相关联邦学习算法
+# 2. 支持的模型
 
-## 2.1 支持的中心化联邦学习算法
+<img src="https://github.com/LINC-BIT/FCLOnMDefenseData/blob/main/Model.png" width="100%">
+
+目前系统支持了包括图像分类、文本分类和表格类数据预测的相关模型，具体如下：
+
+## 2.1 图像分类模型
+
+对于图像分类模型来说，主要支持了包括传统的CNN系列、ResNet系列以及ViT系列的模型。
+
+- CNN: CNN（卷积神经网络）是一种专用于处理网格数据（如图像）的深度学习模型，通过局部感知和权值共享高效提取特征。其核心结构包含卷积层、池化层和全连接层。目前系统设置了六层CNN以及十层CNN模型。
+
+- [ResNet](https://openaccess.thecvf.com/content_cvpr_2016/html/He_Deep_Residual_Learning_CVPR_2016_paper.html)：该模型由多个卷积层和池化层组成，用于提取图像中的信息。通常，当网络深度较大时，ResNet 容易出现梯度消失（爆炸）现象，性能下降。因此，ResNet 添加了 BatchNorm 来缓解梯度消失（爆炸），并添加了残差连接来缓解性能下降。
+- [MobileNet](https://arxiv.org/abs/1801.04381)：MobileNet 是一个轻量级卷积网络，广泛使用了深度可分离卷积。
+- [DenseNet](https://arxiv.org/pdf/1707.06990.pdf)：DenseNet 扩展了 ResNet，通过在各个块之间添加连接来聚合所有多尺度特征。
+- [WideResNet](https://arxiv.org/pdf/1605.07146)：WideResNet（宽残差网络）是一种深度学习模型，它基于 ResNet 架构，通过增加残差块的宽度（使用更多特征通道）来提升性能和效率，同时降低网络深度。
+- [Vit](https://arxiv.org/abs/2010.11929)：Vision Transformer（ViT）将 Transformer 架构应用于图像识别任务。它将图像分割成多个块，然后将这些小块作为序列数据输入到 Transformer 模型中，利用自注意力机制捕捉图像中的全局和局部信息，从而实现高效的图像分类。目前系统支持了TinyPiT以及TinyViT两个网路。
+
+## 2.2 文本分类模型
+
+对于图像分类模型来说，主要支持了包括传统的RNN系列以及Transformer系列模型。
+
+- [RNN](https://arxiv.org/pdf/1406.1078)：RNN（循环神经网络）是一种专为序列数据设计的神经网络，擅长处理时间序列和具有时间依赖性的自然语言。
+
+- [LSTM](https://arxiv.org/pdf/1406.1078)：LSTM（长短期记忆网络）是一种特殊的 RNN，可以学习长期依赖关系，适用于时间序列分析和语言建模等任务。
+- [Bert](https://arxiv.org/abs/1810.04805)：BERT（基于 Transformer 的双向编码器表示）是一种基于 Transformer 架构的预训练语言表示模型，它通过深度双向训练来捕获文本中的上下文信息。BERT 模型在自然语言处理 (NLP) 任务中表现出色，可用于文本分类、问答系统和命名实体识别等各种应用。
+- [LSTMMoE](https://readpaper.com/paper/2952339051):LSTMMoE（LSTM with Mixture of Experts）是一种将长短期记忆 (LSTM) 网络与混合专家框架相结合的模型，通过针对不同输入模式动态选择专门的专家网络来增强序列建模。
+- [GPT2](https://github.com/openai/gpt-2): GPT-2（生成式预训练 Transformer 2）是由 OpenAI 开发的大规模语言模型，旨在通过利用基于 Transformer 的架构并在各种互联网数据上进行预训练来生成连贯且与上下文相关的文本。
+- [GPTNeo](https://github.com/EleutherAI/gpt-neox): GPT-Neo 是由 EleutherAI 开发的开源语言模型，旨在作为 GPT 的替代方案，利用基于 Transformer 的架构生成高质量、与上下文相关的文本。
+
+## 2.3 表格预测模型
+
+对于表格预测来说，主要支持了神经网络系列以及树模型系列的网络。
+
+- 全连接神经网络：DNN（全连接神经网络）是一种基础的深度学习模型，其内部逻辑是通过多层神经元之间的全连接权重矩阵进行非线性变换，每一层的输出作为下一层的输入，最终实现输入到输出的复杂映射。它依靠反向传播算法优化权重，利用激活函数（如ReLU、Sigmoid）引入非线性，适用于各类通用机器学习任务。
+- XGBoost：XGBoost（极端梯度提升）是一种基于决策树的集成学习算法，其内部逻辑通过迭代地训练弱分类器（CART树），并利用梯度提升框架（GBDT）优化损失函数，同时引入正则化项控制模型复杂度以防止过拟合。
+- LightGBM：LightGBM是一种高效的梯度提升框架，其核心逻辑基于直方图算法（将连续特征离散化为 bins 加速计算）和单边梯度采样（GOSS），保留大梯度样本并随机采样小梯度样本以提升训练速度。同时，它采用Leaf-wise 生长策略（仅分裂增益最大的叶子节点，而非 Level-wise），在降低计算开销的同时保持较高精度，尤其适合大规模数据和高维特征场景。
+
+# 3. 支持的相关联邦学习算法
+
+## 3.1 支持的中心化联邦学习算法
 
 目前系统支持了很多经典的和最新的联邦学习算法，包括基于异构网络模型的联邦学习算法以及聚类联邦学习算法，主要有：
 
@@ -237,7 +275,7 @@ python ImageEnhance.py --data_dir = '原始图片存放路径' --output_dir = '�
 - **[IFCA](https://proceedings.neurips.cc/paper_files/paper/2020/hash/e32cc80bf07915058ce90722ee17bb71-Abstract.html)**：本文来自 NIPS (2020)。它估计客户端的聚类特征，优化每个簇的模型参数，并允许不同簇之间共享参数。您可以在[此处](Baselines/IFCA)找到方法描述
 - **[GradMFL](https://link.springer.com/chapter/10.1007/978-3-030-95384-3_38)** ：本文来自 ICAAPP (2021)。它引入了一个层次聚类来组织客户端，并支持不同层次结构之间的知识迁移。您可以在[此处](Baselines/GradMFL)找到方法描述。
 
-## 2.2 支持的去中心化联邦学习算法
+## 3.2 支持的去中心化联邦学习算法
 
 目前系统还支持了多个去中心化的联邦学习算法，主要有：
 
@@ -247,7 +285,7 @@ python ImageEnhance.py --data_dir = '原始图片存放路径' --output_dir = '�
 - **[DPFL](https://ieeexplore.ieee.org/abstract/document/9993756/)**：本文来自TMC（第23卷，2024年）。它提出了一种用于6G无线网络的集成式分层去中心化联邦学习框架。其中每个小区中的设备会定期达成D2D共识，然后参与小区间聚合，从而联合训练全局模型，同时优化收敛速度和通信能耗权衡。您可以在[此处](baselines/DPFL)找到方法描述。
 - **[FedIR](https://ieeexplore.ieee.org/abstract/document/9944948/)**：本文来自TMC（第23卷，2024年）。它提出了一种新颖的方法，利用两阶段优化方法来平衡联邦学习中的系统延迟和能耗，其中本地模型通过分布式共识机制进行协作更新，无需中央服务器。您可以在[此处](baselines/FedIR) 找到该方法的描述。
 
-## 2.3 支持的联邦持续学习算法
+## 3.3 支持的联邦持续学习算法
 
 - **[FedKNOW](https://ieeexplore.ieee.org/abstract/document/10184531/)**：本文摘自 ICDE (2023)。它提出了一种新颖的通信高效的联邦学习算法，该算法采用自适应梯度量化和选择性客户端聚合，根据网络状况和客户端异构性动态调整模型更新，从而降低通信开销并加速收敛。您可以在[此处](baselines/FedKNOW) 找到方法描述。
 - **[FedViT](https://www.sciencedirect.com/science/article/abs/pii/S0167739X23004879)**：本文摘自《Future Generation Computer Systems 》（第154卷，2024年）。它提出了一种新颖的集成优化框架，该框架将先进的机器学习与启发式搜索方法相结合，通过自适应迭代参数调整来动态优化复杂的工业系统。您可以在[此处](baselines/FedViT)找到方法描述
@@ -257,9 +295,9 @@ python ImageEnhance.py --data_dir = '原始图片存放路径' --output_dir = '�
 - **[TFCL](https://openaccess.thecvf.com/content/CVPR2024/html/Wang_Traceable_Federated_Continual_Learning_CVPR_2024_paper.html)**：本文来自CVPR（2024年）。它提出了一种新颖的可追踪联邦持续学习 (TFCL) 范式，引入了 TagFed 框架，该框架将模型分解为针对每个客户端任务的标记子模型，从而实现精确追踪和选择性联邦，从而有效地处理重复性任务。您可以在 [此处](baselines/TFCL) 找到方法描述。
 - **[Loci](https://ieeexplore.ieee.org/abstract/document/10857343/)**：本文来自 TPDS（第 36 卷，2025 年）。它提出 Loci 使用紧凑的模型权重来抽象客户端过去和同伴的任务知识，并开发一种通信高效的方法来训练每个客户端的本地模型，方法是将其任务知识与其他客户端中最准确的相关知识进行交换。您可以在 [此处](baselines/Loci) 找到方法描述。
 
-# 3. 方法运行例子
+# 4. 方法运行例子
 
-## 3.1 如何开始
+## 4.1 如何开始
 
 **Requirements**
 
@@ -287,7 +325,7 @@ git clone https://github.com/LINC-BIT/FCLOnMDefenseData.git
 pip install -r requirements.txt
 ```
 
-## 3.2 各方法运行例子
+## 4.2 各方法运行例子
 
 **PENS**
 
