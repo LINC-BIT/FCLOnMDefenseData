@@ -222,6 +222,7 @@ python ImageEnhance.py --data_dir = '原始图片存放路径' --output_dir = '�
    - 极寒海冰（破冰船作业、冰面巡逻）
    - 暴雨巨浪（船舱进水抢险）
    - 节日战备（春节/国庆执勤场景）
+<img src="https://github.com/LINC-BIT/FCLOnMDefenseData/blob/main/海防数据集.jpg" width="100%">
 
 # 2. 支持的模型
 
