@@ -1,6 +1,5 @@
-<img width="274" height="94" alt="image" src="https://github.com/user-attachments/assets/988e7931-a08d-4e21-a910-e07705727dfc" /># FCLOnMDefenseData
 
-这是一个面向海防部队数据的图像分析的联邦持续学习算法系统。该系统是为应对海防作战中数据孤岛、任务动态演化与隐私安全的多重挑战，其基于“数据-算法-训练”三位一体的联邦持续学习系统架构。系统以任务粒度为核心设计维度，通过模块化分层解耦与协同控制机制， 实现海防异构数据的合规治理、动态模型的弹性进化以及跨域知识的可控共享。其主要包括数据处理功能以及联邦持续学习训练功能。数据处理模块构建军事文档解析与特征标准化流水线，将碎片化的PDF数据转化为联邦就绪的可训练图片。之后在联邦持续学习方法中支持多种中心化和去中心化的相关算法，形成“数据特征可溯源、算法能力可扩展、训练过程可管控”的闭环系统，为海防任务提供从数据感知到智能决策的全链路支撑。
+面向海防部队数据的图像分析的联邦持续学习算法系统。该系统是为应对海防作战中数据孤岛、任务动态演化与隐私安全的多重挑战，其基于“数据-算法-训练”三位一体的联邦持续学习系统架构。系统以任务粒度为核心设计维度，通过模块化分层解耦与协同控制机制， 实现海防异构数据的合规治理、动态模型的弹性进化以及跨域知识的可控共享。其主要包括数据处理功能以及联邦持续学习训练功能。数据处理模块构建军事文档解析与特征标准化流水线，将碎片化的PDF数据转化为联邦就绪的可训练图片。之后在联邦持续学习方法中支持多种中心化和去中心化的相关算法，形成“数据特征可溯源、算法能力可扩展、训练过程可管控”的闭环系统，为海防任务提供从数据感知到智能决策的全链路支撑。
 
 <img src="https://github.com/LINC-BIT/FCLOnMDefenseData/blob/main/System.png" width="100%">
 
@@ -415,3 +414,6 @@ python FCL/FedKEMF/Loci.py --alg=EWC_Our --model=resnet --gpu=0 --seed=614 --m_f
 ```
 
 <img src="https://github.com/LINC-BIT/FCLOnMDefenseData/blob/main/running_image/Loci.png" width="100%">
+
+<img width="274" height="94" alt="image" src="https://github.com/user-attachments/assets/988e7931-a08d-4e21-a910-e07705727dfc" /># FCLOnMDefenseData
+
